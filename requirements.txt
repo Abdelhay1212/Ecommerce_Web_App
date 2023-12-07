@@ -10,3 +10,4 @@ pymysql
 Pillow
 email_validator
 requests
+cryptography

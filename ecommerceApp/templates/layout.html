@@ -1,4 +1,26 @@
 {% extends "base.html" %}
+
+{% block css_files %}
+
+    <link rel="stylesheet" href="../static/styles/navBar.css">
+    <link rel="stylesheet" href="../static/styles/footer.css">
+
+    {% if title == 'Home' %}
+        <link rel="stylesheet" href="../static/styles/home.css">
+    {% elif title == 'Shop' %}
+        <link rel="stylesheet" href="../static/styles/shop.css">
+    {% elif title == 'Sustainability' or title == 'About' %}
+        <link rel="stylesheet" href="../static/styles/sustainability.css">
+    {% elif title == 'Contact' %}
+        <link rel="stylesheet" href="../static/styles/contact.css">
+    {% elif title == 'Product' %}
+        <link rel="stylesheet" href="../static/styles/product.css">
+    {% elif title == 'Cart' %}
+        <link rel="stylesheet" href="../static/styles/cart.css">
+    {% endif %}
+
+{% endblock css_files %}
+
 {% block content %}
     <div class="navContainer fixed-top">
         <nav class="container navbar navbar-expand-lg">
@@ -41,8 +63,8 @@
                                 <img src="{{ url_for('static', filename='images/users_images/' + current_user.image_file) }}" class="img-fluid rounded-circle" width="40">
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/account">Account</a></li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('users.account') }}">Account</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('users.logout') }}">Logout</a></li>
                             </ul>
                         </div>
                     {% else %}

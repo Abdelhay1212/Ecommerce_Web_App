@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.secret_key = '156e497c1a5c51bbdfda262e57a1092c'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost:3306/ecommerce_web_app'
 app.url_map.strict_slashes = False
-PAYPAL_CLIENT_ID = 'AVx6LkXPkSNvtiGaA_Karq_4Y0-Hs9Bxs8ktohJXa8OUd-8wi4pJd3AaTn4ryB9aIOt2x8gTuenzrHYE'
-PAYPAL_CLIENT_SECRET = 'ECgOl97UxN6zGJk1V-qDCF1ngu1HWNtaZKPFPM4fFe93SAl68oqZy2ImQsZZ8nLET7h00sMCTbGDY0QC'
+PAYPAL_CLIENT_ID = ''
+PAYPAL_CLIENT_SECRET = ''
 db.init_app(app)
 bcrypt = Bcrypt(app)
 login_manager.init_app(app, add_context_processor=True)
