@@ -1,0 +1,12 @@
+Flask 
+bcrypt
+Flask-Bcrypt 
+Flask-Login 
+Flask-Mail 
+Flask-SQLAlchemy 
+Flask-WTF 
+WTForms
+pymysql
+Pillow
+email_validator
+requests

@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block sections %}
+
+<header class="header d-flex align-items-center justify-content-center text-center py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h2 class="text-lg text-md">Handmade ceramics</h2>
+                <p class="text-lg text-md lead">Painted clay ceramics made with love.</p>
+                <a class="btn btn-lg" href="{{ url_for('shop.shop_route') }}" role="button">Shop now</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="best_sellers">
+    <div class="container text-center">
+        <h2 class="text-lg text-md">Our bestsellers</h2>
+        <div class="products">
+            <div class="row">
+                {% for product in top_products %}
+                    <div class="col-md-6 col-lg-3">
+                        <div>
+                            <div class="img">
+                                <a href="{{ url_for('product.product_route', product_id=product.product_id) }}">
+                                    <img src="../static/images/products_images/{{ product.image }}" class="card-img-top" alt="Product Image">
+                                    <div class="overlay"></div>
+                                    <div class="sale">SALE</div>
+                                </a>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title mt-3 mb-2">{{ product.title }}</h5>
+                                {% if product.stock == 0 %}
+                                    <p class="card_text">
+                                        <span style="color: #ccc;">SOLD OUT</span>
+                                    </p>
+                                {% else %}
+                                    <p class="card-text">
+                                        <del>${{ product.old_price }}</del>
+                                        <span>${{ product.price }}</span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="decor d-flex align-items-center justify-content-center text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h2 class="text-lg text-md">Home decor items</h2>
+                <p class="text-xl text-lg text-md lead">Find your new favorite pieces.</p>
+                <a class="btn btn-lg" href="{{ url_for('shop.shop_route') }}" role="button">Shop now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+                <div class="about">
+                    <img src="../static/images/about_image.png" alt="About Mina Image" class="img-fluid" data-bs-toggle="modal" data-bs-target="#image1Modal">
+                    <div class="card-body">
+                        <h5 class="text-lg text-md mt-4 mb-3">About Mina</h5>
+                        <p class="text-lg text-md mb-4">Mina is a brand born out of a passion for ceramics.</p>
+                        <a href="{{ url_for('about.about_route') }}" class="btn btn-lg">Learn more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-4">
+                <div class="Sustainability">
+                    <img src="../static/images/sust_image.png" " alt="Sustainability Image" class="img-fluid" data-bs-toggle="modal" data-bs-target="#image2Modal">
+                    <div class="card-body">
+                        <h5 class="text-lg text-md mt-4 mb-3">Sustainability</h5>
+                        <p class="text-lg text-md mb-4" >Mina is an eco-friendly brand that cares about sustainability.</p>
+                        <a href="{{ url_for('sustainability.sustainability_route') }}" class="btn btn-lg">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal 1-->
+<div class="modal fade" id="image1Modal" tabindex="-1" aria-labelledby="image1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="../static/images/about_image.png" class="img-fluid" alt="Large Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2-->
+<div class="modal fade" id="image2Modal" tabindex="-1" aria-labelledby="image2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="../static/images/sust_image.png" class="img-fluid" alt="Large Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="newsLetter py-5">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 text-center d-flex flex-column justify-content-center align-items-center">
+                <h5 class="text-lg text-md mb-5">Sign-up for our newsletter</h5>
+                <form action="{{ url_for('home.home_route') }}" method="post">
+                    <div class="mb-3">
+                        <input id="email" type="email" name="email" placeholder="Your email address">
+                    </div>
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock sections %}

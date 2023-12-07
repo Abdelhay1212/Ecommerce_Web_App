@@ -1,0 +1,58 @@
+.product_cart {
+    margin-top: 82px;
+    padding: 3rem 0 5rem;
+}
+
+table thead td {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.product_cart img {
+    width: 7rem;
+}
+
+.product_cart .bold {
+    font-weight: 600;
+    margin-right: 0.6rem;
+}
+
+.product_cart .counter a {
+    padding: 1.2rem;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.product_cart .counter .decrease {
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.product_cart .counter .increase {
+    color: white;
+    background-color: #06153a;
+}
+
+.product_cart .counter span {
+    text-align: center;
+    width: 3rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.product_cart .remove {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+}
+
+.product_cart .checkout {
+    background: #06153a;
+    color: white;
+    font-size: 16px;
+    border-radius: 3px;
+    letter-spacing: 2px;
+    cursor: not-allowed;
+}

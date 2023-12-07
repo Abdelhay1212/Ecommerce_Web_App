@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="media d-flex align-items-center justify-content-start gap-4">
+        <img class="rounded-circle account-img" src="{{ image_file }}" width="100">
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.username }}</h2>
+            <p>{{ current_user.email }}</p>
+        </div>
+    </div>
+
+    <div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+
+                <div class="mb-3">
+                    {{ form.username.label(class="form-label") }}
+
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.image_file.label() }}
+                    {{ form.image_file(class="form-control-file") }}
+
+                    {% if form.image_file.errors %}
+                        {% for error in form.image_file.errors %}
+                            <span class="text-danger">{{ error }}</span><br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+
+            <div class="mb-3">
+                {{ form.submit(class="accountButton btn") }}
+            </div>
+        </form>
+    </div>
+
+    <a href="{{ url_for('home.home_route') }}" style="color: black;">&#60;&#60; Go back</a>
+
+</div>
+{% endblock content %}

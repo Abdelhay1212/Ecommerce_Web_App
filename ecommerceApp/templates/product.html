@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block sections %}
+<section class="product">
+    <div class="container">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="img">
+                    <img src="../static/images/products_images/{{ data.image }}" class="img-fluid" alt="Product Image">
+                </div>
+            </div>
+            <div class="card-body col-md-6 col-lg-6">
+                <h5 class="card-title mt-3">{{ data.title }}</h5>
+                <p class="card-text mb-4">
+                    <del>${{ data.old_price }}</del>
+                    <span>${{ data.price }}</span>
+                </p>
+
+                {% if current_user.is_authenticated %}
+                    {% set path = '/add_to_cart/' + data.product_id|string + '/' + current_user.user_id|string %}
+                {% else %}
+                    {% set path = '/product/' + data.product_id|string %}
+                {% endif %}
+
+                <form action="{{ path }}" method="post">
+                    <div class="color">
+                        <label for="color">Color</label>
+                        <select id="color" name="color">
+                            <option>Yellow</option>
+                            <option>Blue</option>
+                            <option>White</option>
+                        </select>
+                    </div>
+
+                    <div id="counter" class="counter mb-4">
+                        <button class="px-3 py-2" type="button" onclick="decreaseCounter()">-</button>
+                        <input type="number" id="counterInput" name="amount" value="1" min="1" max="{{ data.stock }}" readonly>
+                        <button class="px-3 py-2" type="button" onclick="increaseCounter('{{ data.stock }}')">+</button>
+                        <p class="mx-3">{{ data.stock }} in stock</p>
+                    </div>
+
+                    <button class="btn btn-lg">Add To Cart</button>
+                </form>
+
+                <p class="mt-5">{{ data.content }}</p>
+                <p>Material: Stoneware clay; matte glaze.</p>
+                <p>Color: Yellow, Blue or White</p>
+                <p>Measurements: 10x10 cm</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function increaseCounter(stock) {
+        let counterInput = document.getElementById('counterInput');
+        if (parseInt(counterInput.value) < parseInt(stock)) {
+            counterInput.value = parseInt(counterInput.value) + 1;
+        }
+    }
+
+    function decreaseCounter() {
+        let counterInput = document.getElementById('counterInput');
+        if (parseInt(counterInput.value) > 1) {
+            counterInput.value = parseInt(counterInput.value) - 1;
+        }
+    }
+</script>
+
+{% endblock sections %}

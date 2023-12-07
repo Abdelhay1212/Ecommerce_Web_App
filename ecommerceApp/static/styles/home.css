@@ -1,0 +1,229 @@
+.header {
+    width: 100%;
+    height: 100%;
+    margin-top: 82px;
+    background-image: url("../images/home_header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+
+.decor {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/home_decor.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+
+.header::before,
+.decor::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);   
+}
+
+.header .container,
+.decor .container {
+    padding: 11.5rem 0;
+    z-index: 999;
+}
+
+.header h2,
+.decor h2 {
+    color: white;
+}
+
+.header p,
+.decor p {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.header a,
+.decor a {
+    color: #2f1c6a;
+    background-color: white;
+    border-color: white;
+    font-size: 16px;
+}
+
+.header a:hover,
+.decor a:hover {
+    color: white;
+    background-color: #2f1c6a;
+}
+
+@media screen and (min-width: 900px) {
+    .header h2,
+    .decor h2 {
+        font-size: 5rem;
+    }
+    
+    .header p,
+    .decor p {
+        font-size: 2rem;
+    }
+}
+
+
+/* Best Sellers Section*/
+
+.best_sellers {
+    color: #1a1a1a;
+}
+
+.best_sellers .container {
+    padding: 5rem 1rem;
+}
+
+.best_sellers h2 {
+    margin-bottom:  5rem;
+}
+
+.best_sellers .products .img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.best_sellers .products .overlay {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+}
+
+.best_sellers .products .img:hover .overlay {
+    left: 0;
+}
+
+.best_sellers .products p {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.best_sellers .products p del {
+    color: #ccc;
+}
+
+.best_sellers .products .sale {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    padding: 0.5rem 1.2rem;
+    color: white;
+    background-color: #6f1787;
+}
+
+@media screen and (min-width: 900px) {
+    .best_sellers h2 {
+        font-size: 3rem;
+    }
+}
+
+/* Info Section */
+
+.info {
+    padding: 5rem;
+}
+
+.info a {
+    color: white;
+    background-color: #2f1c6a;
+    font-size: 16px;
+}
+
+.info a:hover {
+    color: white;
+    background-color: #251652;
+}
+
+.info img {
+    width: 100%;
+    cursor: zoom-in;
+}
+
+@media screen and (min-width: 900px) {
+    .info h5 {
+        font-size: 2.5rem;
+    }
+    
+    .info p {
+        font-size: 1.2rem;
+    }
+}
+
+/* NewsLetter Section */
+
+.newsLetter {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/newsLetter_image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.newsLetter .container {
+    padding: 10rem 0rem;
+}
+
+.newsLetter h5 {
+    color: white;
+}
+
+.newsLetter input {
+    padding: 0.5rem 1rem;
+    min-width: 23rem;
+    margin-bottom: 2rem;
+    outline: none;
+    border: none;
+}
+
+.newsLetter input::placeholder {
+    color: #ccc;
+}
+
+.newsLetter button {
+    color: #2f1c6a;
+    background-color: white;
+    padding: 0.6rem 2rem;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.newsLetter button:hover {
+    color: #2f1c6a;
+    background-color: white;
+}
+
+@media screen and (max-width: 400px) {
+    .newsLetter input {
+        width: fit-content;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .newsLetter h5 {
+        color: white;
+        font-size: 4rem;
+    }
+}

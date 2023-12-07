@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="navContainer fixed-top">
+        <nav class="container navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="logo navbar-brand" href="{{ url_for('home.home_route') }}">
+                    <img src="../static/images/logo.jpg" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link m-2 {% if title == 'Home' %}active{% endif %}" aria-current="page" href="{{ url_for('home.home_route') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-2 {% if title == 'Shop' %}active{% endif %}" aria-current="page" href="{{ url_for('shop.shop_route') }}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-2 {% if title == 'Sustainability' %}active{% endif %}" aria-current="page" href="{{ url_for('sustainability.sustainability_route') }}">Sustainability</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-2 {% if title == 'About' %}active{% endif %}" aria-current="page" href="{{ url_for('about.about_route') }}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link m-2 {% if title == 'Contact' %}active{% endif %}" aria-current="page" href="{{ url_for('contact.contact_route') }}">Contact</a>
+                        </li>
+                    </ul>
+                    {% if current_user.is_authenticated %}
+                        <div class="cart">
+                            <a href="{{ url_for('cart.cart_route') }}">
+                                <img src="../static/images/cart.svg" alt="cart">
+                                {% if num_of_items > 0 %}
+                                    <span class="num_of_items">{{ num_of_items }}</span>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ url_for('static', filename='images/users_images/' + current_user.image_file) }}" class="img-fluid rounded-circle" width="40">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/account">Account</a></li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="d-flex">
+                            <a class="nav_btn btn me-2" href="{{ url_for('users.login') }}">Login</a>
+                            <a class="nav_btn btn" href="{{ url_for('users.register') }}">Sign Up</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    {% block sections %}
+    {% endblock sections %}
+
+    <footer class="footer">
+        <div class="container d-md-flex justify-content-between align-items-center">
+            <div class="social_media">
+                <img src="../static/images/logo.jpg" alt="logo" width="80">
+                <div class="social_icons">
+                    <a href="https://web.facebook.com/" target="_blank">
+                        <img src="../static/images/facebook.svg" alt="facebook icon">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="../static/images/instagram.svg" alt="instagram icon">
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                        <img src="../static/images/twitter-x.svg" alt="X corp icon">
+                    </a>
+                </div>
+            </div>
+            <div class="links mt-4 mt-md-0">
+                <a href="/Admin">Admin</a>
+                <a href="{{ url_for('contact.contact_route') }}">Contact</a>
+                <a href="/Returns">Returns</a>
+                <a href="/Payment_detail">Payments & Delivery</a>
+            </div>
+        </div>
+    </footer>
+{% endblock content %}

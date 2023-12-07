@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block sections %}
+<header class="header_shop text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h2 class="text-lg text-md">Contact us</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-10">
+                <div class="mb-5">
+                    <h2>Headquarters</h2>
+                    <p>The Mina Studio</p>
+                    <p>8241 Us 41,</p>
+                    <p>Monteagle,</p>
+                    <p>TN, 37356</p>
+                </div>
+                <div>
+                    <h2>Collaborations</h2>
+                    <p>Reach out to collaborate at</p>
+                    <p>collab@mina.com</p>
+                </div>
+            </div>
+
+            <div class="form col-lg-6 col-md-10">
+                <h2>Inquiries</h2>
+                <form action="{{ url_for('contact.contact_route') }}" method="post">
+                    <label for="email">Email*</label>
+                    <input id="email" type="Email" name="email" placeholder="Your email address" required>
+
+                    <label for="name">Name*</label>
+                    <input id="name" type="text" name="name" placeholder="Your name" required>
+
+                    <label for="message">Message*</label>
+                    <textarea name="message" id="message" name="message" placeholder="Enter your message" cols="30" rows="3"></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock sections %}

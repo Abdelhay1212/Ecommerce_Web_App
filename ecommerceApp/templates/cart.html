@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block sections %}
+<div class="product_cart">
+    <div class="container">
+        <h2 class=" mb-4">Your Cart</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Description</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td>Remove</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if products %}
+                        {% for product in products %}
+                            <tr>
+                                <td class="d-flex align-items-center align-middle gap-2">
+                                    <img src="../static/images/products_images/{{ product.image }}" alt="{{ product.title }}">
+                                    <h5>{{ product.title }}</h5>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="counter d-flex align-items-center">
+                                        <a href="{{ url_for('cart.update_to_cart', product_id=product.product_id, user_id=current_user.user_id, opt='minus') }}" class="decrease px-3 py-2" onclick="decreaseCounter()">-</a>
+                                        <span id="counter">{{ product.amount }}</span>
+                                        <a href="{{ url_for('cart.update_to_cart', product_id=product.product_id, user_id=current_user.user_id, opt='plus') }}" class="increase px-3 py-2" onclick="increaseCounter('{{ product.stock }}')">+</a>
+                                    </div>
+                                </td>
+                                <td class="align-middle">
+                                    <span>${{ product.price }}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="{{ url_for('cart.delete_in_cart', product_id=product.product_id, user_id=current_user.user_id) }}" class="remove btn">X</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td></td><td></td>
+                                <td>
+                                    No Items Yet.
+                                </td>
+                                <td></td><td></td>
+                            </tr>
+                    {% endif %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="align-middle"><span class="bold">Total:</span>${{ total }}</td>
+                        <td class="align-middle">
+                            <a href="#" title="Not implemented yet!" class="checkout btn btn-lg">CHECKOUT</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function increaseCounter(stock) {
+        let counter = document.getElementById('counter');
+        if (parseInt(counter.value) < parseInt(stock)) {
+            counter.value = parseInt(counter.value) + 1;
+        }
+    }
+
+    function decreaseCounter() {
+        let counter = document.getElementById('counter');
+        if (parseInt(counter.value) > 1) {
+            counter.value = parseInt(counter.value) - 1;
+        }
+    }
+</script>
+{% endblock sections %}

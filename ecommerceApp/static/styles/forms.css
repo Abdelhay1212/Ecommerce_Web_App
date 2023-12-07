@@ -1,0 +1,46 @@
+.form-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #c7c7c7;
+    margin: 50px auto auto;
+    padding: 30px;
+    max-width: 600px;
+}
+
+legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2f1c6a;
+}
+
+.form-control-lg {
+    border-radius: 5px;
+}
+
+.button,
+.accountButton {
+    width: 100%;
+    color: #2f1c6a;
+    background-color: white;
+    border: 1px solid #2f1c6a;
+    outline: none;
+}
+
+.button:hover,
+.accountButton:hover {
+    color: white;
+    background-color: #2f1c6a;
+    border: 1px solid #2f1c6a;
+}
+
+.accountButton {
+    width: fit-content;
+}
+
+.text-muted a {
+    color: #007bff;
+}
+
+.text-muted a:hover {
+    text-decoration: underline;
+}

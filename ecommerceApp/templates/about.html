@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block sections %}
+    <header class="header_shop text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h2 class="text-lg text-md">About</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="sustainability">
+        <div class="container">
+            <h2>Mina is a brand born out of love for ceramics, vivid colours and passion for life.</h2>
+            <div class="row align-items-center justify-content-center mb-5">
+                <div class="col-lg-5 col-md-10">
+                    <img src="../static/images/about1.png" class="img-fluid" alt="Sustainability Image">
+                </div>
+                <div class="content c1 col-lg-5 col-md-10">
+                    <h5>Alex & Laura</h5>
+                    <p>Two creative minds that came together at art school, Alex and Laura founded
+                        Mina with a shared passion for design and sustainability.
+                        For them, success is more than just about having a bestselling product.
+                    </p>
+                    <p>Every piece in our store has been created with love by Alex and Laura.
+                        They take inspiration from the world around them when it comes to shapes,
+                        colors, and the clay that they work with.
+                    </p>
+                    <p>Join us on our mission to fill every home with beautiful, sustainable décor.</p>
+                </div>
+            </div>
+
+            <div class="row align-items-center justify-content-center mt-5">
+                <div class="col-lg-5 col-md-10 order-lg-2">
+                    <img src="../static/images/about2.png" class="img-fluid" alt="Sustainability Image">
+                </div>
+                <div class="content c2 col-lg-5 col-md-10 order-lg-1">
+                    <h5>Sustainability</h5>
+                    <p>Our thoughts about the planet impact everything we do, from the clay we use to the packaging we provide.
+                        Find out how we stay responsible.
+                    </p>
+                    <a class="btn btn-lg mt-3" href="{{ url_for('sustainability.sustainability_route') }}">Read more</a>
+                </div>
+            </div>
+        </div>
+    </section>    
+{% endblock sections %}

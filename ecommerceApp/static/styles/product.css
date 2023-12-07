@@ -1,0 +1,83 @@
+.product {
+    margin-top: 82px;
+    padding: 5rem 0;
+}
+
+.product .card-body {
+    padding: 0 4rem;
+}
+
+.product .card-body h5 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.product .card-body p {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.product .card-body p del {
+    color: #ccc;
+    margin-right: 0.6rem;
+}
+
+.product .color {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.product .color select {
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 0.8rem 1.3rem;
+    max-width: 55%;
+}
+
+.product .counter {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.product .counter p {
+    margin: 0;
+}
+
+.product .counter button {
+    outline: none;
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.product .counter input {
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.product .btn {
+    color: white;
+    background-color: #495867;
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .product .card-body h5 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .product .card-body {
+        padding: 0 1rem;
+    }
+}

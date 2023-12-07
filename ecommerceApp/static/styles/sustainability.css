@@ -1,0 +1,49 @@
+/* sustainability styles */
+
+.sustainability {
+    padding: 6rem 0;
+}
+
+.sustainability h2 {
+    font-size: 1.6rem;
+    max-width: 35rem;
+    margin: auto auto 5rem;
+    text-align: center;
+}
+
+.sustainability .content h5 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.sustainability .content p {
+    color: #8b868b;
+    font-size: 18px;
+}
+
+.sustainability .content a {
+    color: white;
+    background-color: #4c1f59;
+}
+
+@media screen and (min-width: 991px) {
+    .sustainability .c1 {
+        margin-left: 8rem;
+    }
+
+    .sustainability .c2 {
+        margin-right: 8rem;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .sustainability .content {
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sustainability .content h5 {
+        font-size: 25px;
+    }
+}

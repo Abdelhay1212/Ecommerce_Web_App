@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block sections %}
+    <header class="header_shop text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h2 class="text-lg text-md">Shop</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="best_sellers">
+        <div class="container">
+            <div class="products">
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-md-6 col-lg-4">
+                            <div>
+                                <div class="img">
+                                    <a href="{{ url_for('product.product_route', product_id=product.product_id) }}">
+                                        <img src="../static/images/products_images/{{ product.image }}" class="card-img-top" alt="Product Image">
+                                        <div class="overlay"></div>
+                                    </a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mt-3 mb-2">{{ product.title }}</h5>
+                                    {% if product.stock <= 0 %}
+                                        <p class="card-text">
+                                            <span style="color: #ccc;">SOLD OUT</span>
+                                        </p>
+                                    {% else %}
+                                        <p class="card-text">
+                                            <del>${{ product.old_price }}</del>
+                                            <span>${{ product.price }}</span>
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock sections %}

@@ -1,0 +1,51 @@
+/* NavBar Styles */
+
+.navContainer {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.nav_btn {
+    color: #4c1f59;
+    border-color: #4c1f59;
+}
+
+.nav_btn:hover {
+    color: white;
+    background-color: #4c1f59;
+}
+
+.active {
+    color: #4c1f59;
+}
+
+.logo img {
+    width:  3.5rem;
+}
+
+.navContainer .cart {
+    margin-right: 0.7rem;
+    position: relative;
+}
+
+.navContainer .cart img {
+    width: 1.5rem;
+    cursor: pointer;
+    color: #1a1a1a;
+}
+
+.navContainer .cart .num_of_items {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    background-color: red;
+    top: -40%;
+    right: -40%;
+    color: white;
+    text-align: center;
+    line-height: 15px;
+    font-size: 12px;
+    border-radius: 50%;
+}
