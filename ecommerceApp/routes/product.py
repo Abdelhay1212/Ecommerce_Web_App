@@ -15,5 +15,4 @@ def product_route(product_id):
         flash('You Have To Login To Add Items Into Your Cart!', 'info')
         return redirect(url_for('users.login'))
 
-    return render_template("product.html", data=data)
-
+    return render_template("product.html", data=data, title='Product')

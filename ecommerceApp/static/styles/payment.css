@@ -1,0 +1,57 @@
+.checkout {
+    margin: auto;
+    padding-top: 3rem;
+    max-width: 500px;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 333;
+}
+
+.thank-you-container, .failed-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #4c1f59;;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.thank-you-container p, .failed-container p {
+    margin: 0;
+}
+
+.thank-you-message, .failed-message {
+    font-size: 24px;
+    color: #4c1f59;
+    margin-bottom: 20px;
+}
+
+.back-to-home {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    background-color: #4c1f59;
+}
+
+.back-to-home:hover {
+    color: white;
+    background-color: #4c1f59;
+}
+
+.hide {
+    display: none;
+}

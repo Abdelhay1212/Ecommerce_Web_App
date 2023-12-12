@@ -1,6 +1,12 @@
 window.paypal
             .Buttons({
                 async createOrder() {
+
+                    const country = document.getElementById('country').value;
+                    const city = document.getElementById('city').value;
+                    const street = document.getElementById('street').value;
+                    const home = document.getElementById('home').value;
+
                     try {
                         const response = await fetch("/api/orders", {
                             method: "POST",
@@ -8,12 +14,12 @@ window.paypal
                                 "Content-Type": "application/json",
                             },
                             body: JSON.stringify({
-                                cart: [
-                                    {
-                                        id: 1,
-                                        quantity: 2,
+                                cart: {
+                                        country: country,
+                                        city: city,
+                                        street: street,
+                                        home: home
                                     },
-                                ],
                             }),
                         });
                 
@@ -63,30 +69,35 @@ window.paypal
                         } else {
                             // (3) Successful transaction -> Show confirmation or thank you message
                             // Or go to another URL:  actions.redirect('thank_you.html');
-                            const transaction =
-                                orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
-                                orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
-                            resultMessage(
-                                `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
-                            );
-                            console.log(
-                                "Capture result",
-                                orderData,
-                                JSON.stringify(orderData, null, 2),
-                            );
+                            thankYou();
                         }
                     } catch (error) {
                         console.error(error);
-                        resultMessage(
-                            `Sorry, your transaction could not be processed...<br><br>${error}`,
-                        );
+                        transactionFailed();
                     }
                     },
                 })
                 .render("#paypal-button-container");
-            
-// Example function to show a result to the user. Your site's UI library can be used instead.
+
+
 function resultMessage(message) {
     const container = document.querySelector("#result-message");
     container.innerHTML = message;
+}
+
+
+function thankYou() {
+    const thank_you_container = document.getElementById('thankYou');
+    const overlay = document.getElementById('overlay');
+
+    thank_you_container.classList.remove('hide');
+    overlay.classList.remove('hide');
+}
+
+function transactionFailed() {
+    const failed_container = document.getElementById('transactionFailed');
+    const overlay = document.getElementById('overlay_failed');
+
+    failed_container.classList.remove('hide');
+    overlay.classList.remove('hide');
 }

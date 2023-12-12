@@ -35,3 +35,10 @@
         font-size: 5rem;
     }
 }
+
+/* Products Section */
+
+.best_sellers .container {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}

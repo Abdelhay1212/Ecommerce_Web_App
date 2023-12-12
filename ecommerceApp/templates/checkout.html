@@ -1,15 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pay</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="../static/styles/payment.css">
+{% endblock css_files %}
+
+{% block content %}
+    <div class="checkout">
+
+        <h2 class="mb-4">Address Information</h2>
+
+        <!-- Address Form -->
+        <form>
+            <!-- Country -->
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country" name="country" value="{{ form.country }}" required>
+            </div>
+
+            <!-- City -->
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{ form.city }}" required>
+            </div>
+
+            <!-- Street -->
+            <div class="mb-3">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" class="form-control" id="street" name="street" value="{{ form.street }}" required>
+            </div>
+
+            <!-- Home Number -->
+            <div class="mb-3">
+                <label for="home" class="form-label">Home Number</label>
+                <input type="text" class="form-control" id="home" name="home" value="{{ form.home }}" required>
+            </div>
+        </form>
+
         <div id="paypal-button-container"></div>
         <p id="result-message"></p>
-        <!-- Replace the "test" client-id value with your client-id -->
-        <script src="https://www.paypal.com/sdk/js?client-id={{ PAYPAL_CLIENT_ID }}&currency=USD"></script>
-        <script src="../static/js/app.js"></script>
-    </body>
-</html>
+
+
+        <!-- Thank you message -->
+        <div id="overlay" class="overlay hide">
+            <div id="thankYou" class="thank-you-container hide">
+                <div class="thank-you-message">Thank you for your purchase!</div>
+                <p>Your order has been successfully processed.</p>
+                <p>We appreciate your business.</p>
+                
+                <a href="{{ url_for('home.home_route') }}" class="btn back-to-home">Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Transaction failed message -->
+        <div id="overlay_failed" class="overlay hide">
+            <div id="transactionFailed" class="failed-container hide">
+                <div id="failed-message" class="failed-message">Your order has been failed</div>
+                <p>Please try again</p>
+                
+                <a href="{{ url_for('payment.checkout') }}" class="btn back-to-home">Retry</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id={{ PAYPAL_CLIENT_ID }}&currency=USD"></script>
+    <script src="../static/js/app.js"></script>
+{% endblock content %}
