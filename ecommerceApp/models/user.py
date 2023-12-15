@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     image_file = db.Column(db.String(20), default="default.jpg")
+    admin = db.Column(db.Boolean, nullable=False, default=0)
 
     orders = db.relationship('Order', backref='user', lazy=True)
     cart = db.relationship('Cart', backref='user', lazy=True)

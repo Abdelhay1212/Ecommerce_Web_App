@@ -10,3 +10,38 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+.slide_alert {
+    width: 500px;
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 250px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 99999;
+    animation: slideIn 1s ease-in-out;
+}
+
+.slideOut {
+    animation: slideOut 1s ease-in-out;
+    top: -100%;
+}
+
+@keyframes slideIn {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 0%;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        top: 0%;
+    }
+
+    100% {
+        top: -100%;
+    }
+}

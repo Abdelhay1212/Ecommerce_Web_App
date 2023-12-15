@@ -29,6 +29,10 @@ def cart_route():
             products.append(product)
 
     total = round(total, 2)
+
+    if not current_user.is_authenticated:
+        return redirect(url_for('users.login'))
+
     return render_template("cart.html", title="Cart", products=products, total=total)
 
 
@@ -53,7 +57,7 @@ def add_to_cart(product_id, user_id):
 
                 db.session.commit()
     else:
-        flash('You should log in to use this funcionality!')
+        flash('You should log in to use this funcionality!', 'warning')
 
     return redirect(url_for('product.product_route', product_id=product_id))
 
@@ -81,8 +85,9 @@ def update_to_cart():
                         cart_entry.amount += 1
 
                 db.session.commit()
+                flash('Your cart has been updated successfully!', category='success')
     else:
-        flash('You should log in to use this funcionality!')
+        flash('You should log in to use this funcionality!', category='warning')
 
     return redirect(url_for('cart.cart_route'))
 
@@ -100,8 +105,9 @@ def delete_in_cart():
             cart_entry = Cart.query.filter_by(user=user, product=product).first()
             db.session.delete(cart_entry)
             db.session.commit()
+            flash('You succefully deleted one item!', category='success')
     else:
-        flash('You should log in to use this funcionality!')
+        flash('You should log in to use this funcionality!', category='warning')
 
     return redirect(url_for('cart.cart_route'))
 

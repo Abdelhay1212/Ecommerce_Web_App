@@ -2,17 +2,6 @@
 {% block sections %}
 <section class="product">
     <div class="container">
-
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-
         <div class="row">
             <div class="col-md-6 col-lg-6">
                 <div class="img">

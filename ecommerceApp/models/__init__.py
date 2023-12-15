@@ -15,5 +15,4 @@ from ecommerceApp.models.product import Product
 from ecommerceApp.models.order import Order
 from ecommerceApp.models.address import Address
 from ecommerceApp.models.newsletter import NewsLetter
-from ecommerceApp.models.admin import Admin
 from ecommerceApp.models.cart import Cart

@@ -11,3 +11,4 @@ Pillow
 email_validator
 requests
 cryptography
+Flask-migrate

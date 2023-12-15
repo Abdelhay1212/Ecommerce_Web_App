@@ -48,9 +48,9 @@ def account():
         form = UpdateAccountForm()
         if form.validate_on_submit():
             if form.image_file.data:
-                image_file = save_image(form.image_file.data)
+                image_file = save_image(form.image_file.data, 'static/images/users_images')
                 if image_file != 'default.jpg':
-                    delete_image(current_user.image_file)
+                    delete_image(current_user.image_file, 'static/images/users_images')
                 current_user.image_file = image_file
             current_user.username = form.username.data
             current_user.email = form.email.data

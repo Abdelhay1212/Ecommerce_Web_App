@@ -1,7 +1,7 @@
 from ecommerceApp.models import db
 from ecommerceApp.models.product import Product
 from ecommerceApp.models.newsletter import NewsLetter
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 
 home = Blueprint('home', __name__)
@@ -17,7 +17,10 @@ def home_route():
                 subscriber = NewsLetter(email=email)
                 db.session.add(subscriber)
                 db.session.commit()
+                flash("You successfully subscribed to our newsletter!", category='success')
+                return redirect(url_for('home.home_route'))
 
+            flash("You already subscribed with this email!", category='info')
         return redirect(url_for('home.home_route'))
 
     top_products = Product.query.order_by(Product.selled.desc()).limit(4).all()

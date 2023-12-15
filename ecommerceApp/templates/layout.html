@@ -17,12 +17,27 @@
         <link rel="stylesheet" href="../static/styles/product.css">
     {% elif title == 'Cart' %}
         <link rel="stylesheet" href="../static/styles/cart.css">
+    {% elif title == 'Control Panel' %}
+        <link rel="stylesheet" href="../static/styles/control_panel.css">
     {% endif %}
 
 {% endblock css_files %}
 
 {% block content %}
-    <div class="navContainer fixed-top">
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="slide_alert alert alert-{{ category }}" id="alert">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="navContainer fixed-top" id="navbar">
         <nav class="container navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="logo navbar-brand" href="{{ url_for('home.home_route') }}">
@@ -98,11 +113,32 @@
                 </div>
             </div>
             <div class="links mt-4 mt-md-0">
-                <a href="/Admin">Admin</a>
+                <a href="{{ url_for('admin.control_panel') }}" target="_blank">Admin</a>
                 <a href="{{ url_for('contact.contact_route') }}">Contact</a>
-                <a href="/Returns">Returns</a>
-                <a href="/Payment_detail">Payments & Delivery</a>
+                <a href="#">Returns</a>
+                <a href="#">Payments & Delivery</a>
             </div>
         </div>
     </footer>
+
+    <script>
+        const alert = document.getElementById('alert');
+        const navbar = document.getElementById('navbar');
+    
+        setTimeout(function() {
+            alert.classList.add('slideOut');
+        }, 3000);
+
+        window.addEventListener('scroll', function() {
+            // Adjust the scroll threshold as needed
+            const scrollThreshold = 10;
+
+            // Check if the user has scrolled beyond the threshold
+            if (window.scrollY > scrollThreshold) {
+                navbar.classList.add('shadow');
+            } else {
+                navbar.classList.remove('shadow');
+            }
+        });
+    </script>
 {% endblock content %}
