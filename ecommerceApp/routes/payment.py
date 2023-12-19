@@ -183,6 +183,9 @@ def onApprove(orderID):
 
 @payment.route('/checkout')
 def checkout():
+    # init a variable
+    form_data = {}
+
     # checking if the user is logged in, then retreive its address from database
     if current_user.is_authenticated:
         address = Address.query.filter_by(user=current_user).first()
